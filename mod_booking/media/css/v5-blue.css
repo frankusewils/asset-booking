@@ -1,0 +1,67 @@
+.mod_bookingcal_inner {
+    display: inline-block;
+    vertical-align: top;
+    border: 3px solid #3f7aa6;
+    border-radius: 6px;    
+}
+.mod_bookingcal_table {
+    margin:0;
+    border-collapse:collapse;
+    border:2px solid #3f7aa6;
+    color:#4a4a4a;
+    background-color:#dce8f1;
+    text-align:center;
+    line-height:1.4;
+    width:auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.mod_bookingcal_table th {
+    border:1px solid #ccc;
+    color:white;
+    font-weight:normal;
+    padding:3px 0;
+    min-width:25px;
+    background-color: #3f7aa6;
+    background-image:none;
+    text-align: center;
+}
+
+.mod_bookingcal_table tr.mod_bookingcal_day th {
+    background-color:white;
+    color:#4a4a4a;
+}
+
+.mod_bookingcal_table tr.mod_bookingcal_month th {border-left: none; border-right: none;}
+
+.mod_bookingcal_table td {border:1px solid #ccc;padding:3px 0;text-align:center;background-color: #eaebf3}
+
+.mod_bookingcal_table td.mod_bookingcal_today {color:white; background-color:#3f7aa6}
+
+.mod_bookingcal_table td.mod_bookingcal_end {
+	color: black;
+    background: linear-gradient(135deg, #F00 50%, #eaebf3 50%);
+}
+
+.mod_bookingcal_table td.mod_bookingcal_start {
+	color: black;
+    background: linear-gradient(135deg, #eaebf3 50%, #F00 50%);
+}
+
+.mod_bookingcal_table td.mod_bookingcal_start_end {
+	color: black;
+    background: linear-gradient(red, yellow, red);
+}
+
+.mod_bookingcal_table td.mod_bookingcal_booked	{color:white; background-color:#F00;}
+
+.mod_bookingcal_table td.mod_bookingcal_nonday {background-color:#fafaff;}
+
+table tr:hover td {background: inherit;}
+
+.mod_bookingcal_table th.mod_bookingcal_left {cursor: pointer;position: relative;}
+span.mod_bookingcal_left {position:absolute; top:6px;right:15px;content:''; border: solid transparent;border-width: 9px;border-right-color: whitesmoke;}
+span.mod_bookingcal_left:hover {border-right-color: orange;}
+
+.mod_bookingcal_table th.mod_bookingcal_right {cursor: pointer;position: relative;}
+span.mod_bookingcal_right {position:absolute; top:6px;left:15px;content:''; border: solid transparent;border-width: 9px;border-left-color: whitesmoke;}
+span.mod_bookingcal_right:hover {border-left-color: orange;}

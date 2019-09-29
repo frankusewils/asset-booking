@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="1.6" method="upgrade">
+	<name>Asset Booking Package</name>
+	<author>Asset Booking Package Team</author>
+	<creationDate>Sep 2019</creationDate>
+	<packagename>booking</packagename>
+	<version>1.0.0</version>
+	<packager>Frank Usewils</packager>
+	<description>Booking package to combine component and module extensions</description>
+	<files folder="packages">
+		<file type="component" id="com_booking">com_booking.zip</file>
+		<file type="module" id="mod_booking_calendar" client="site">mod_booking_calendar.zip</file>
+	</files>
+</extension>
