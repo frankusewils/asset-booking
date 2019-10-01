@@ -63,7 +63,6 @@ class ModBookingCalendarHelper
     public static function getBookings()
     {
         $asset= self::deriveAssetFromModulePosition(self::$modulePosition);
-        echo "fetching bookings for " . $asset;
         // just startup
         $mainframe = JFactory::getApplication();
         // Get the database
