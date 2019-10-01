@@ -1,6 +1,6 @@
-function mod_bookingcal_ajax(offset, year, month)
+function mod_bookingcal_ajax(offset, position, year, month)
 {
-    var url = '?option=com_ajax&module=booking_calendar&format=raw&offset='+offset+'&year='+year+'&month='+month;
+    var url = '?option=com_ajax&module=booking_calendar&format=raw&position='+position+'&offset='+offset+'&year='+year+'&month='+month;
         
     jQuery.ajax({
         url: url,
@@ -10,4 +10,3 @@ function mod_bookingcal_ajax(offset, year, month)
         error: function(xhr, status, error) {jQuery('.mod_booking_calendar_outer').html(error);}
         });        
 }
-

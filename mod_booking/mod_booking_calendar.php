@@ -31,7 +31,7 @@
     
     // if links are configured, load the Javascript
     if ($links == 1)
-        $document->addScript(JURI::root(true) . '/media/mod_booking_calendar/js/mod_bookingcal.js?v=400');
+        $document->addScript(JURI::root(true) . '/media/mod_booking_calendar/js/mod_bookingcal.js');
     
     // Set the month and year, defaulting to the current month
     // if month is negative, it's a negative offset from the current month
@@ -48,16 +48,10 @@
         $startMonth = date('m', $startDate);
         $startYear = date('Y', $startDate);
     }
-    $position = $module->position;
-    // filter out the asset after the last double underscore
-    $match = null;
-    preg_match('/(?<=__).*$/', $position, $match);
-    if (!isset($match) || count($match) == 0)
-        $asset = null; 
-    else
-        $asset = $match[0];
+    $modulePosition = $module->position;
+    
     $html = "\n" . '<div class="mod_booking_calendar_outer">';
-    $html .= ModBookingCalendarHelper::getCalendarsForAsset($params, $asset, $startYear, $startMonth, $links);
+    $html .= ModBookingCalendarHelper::getCalendarsForAsset($params, $modulePosition, $startYear, $startMonth, $links);
     $html .= '</div>';
     
     require JModuleHelper::getLayoutPath('mod_booking_calendar');

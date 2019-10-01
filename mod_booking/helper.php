@@ -15,7 +15,7 @@
 class ModBookingCalendarHelper
 {
 
-    static $asset;
+    static $modulePosition;
 
     /**
      * Retrieves the html page
@@ -47,11 +47,23 @@ class ModBookingCalendarHelper
         return trim($params->get('fullwidth', 0));
     }
 
+    static function deriveAssetFromModulePosition($position)
+    {
+        // filter out the asset after the last double underscore
+        $match = null;
+        preg_match('/(?<=__).*$/', $position, $match);
+        if (!isset($match) || count($match) == 0)
+            return null;
+        return $match[0];
+    }
+
     // ---------------------------------------------------------------------------------------------
     // Get an array of booked days
     //
     public static function getBookings()
     {
+        $asset= self::deriveAssetFromModulePosition(self::$modulePosition);
+        echo "fetching bookings for " . $asset;
         // just startup
         $mainframe = JFactory::getApplication();
         // Get the database
@@ -65,7 +77,7 @@ class ModBookingCalendarHelper
         )))
             ->from($db->quoteName('#__asset_booking'));
         if (isset($asset))
-            $query->where($db->quoteName('name') . ' = ' . $db->quote(self::$asset));
+            $query->where($db->quoteName('name') . ' = ' . $db->quote($asset));
         $db->setQuery($query);
         // Array for the booked periods
         return $db->loadObjectList();
@@ -176,12 +188,12 @@ class ModBookingCalendarHelper
         else {
             $subtractSpan = 1;
             if (self::showPreviousMonth($month, $year, $currentMonth, $currentYear)) {
-                $onclick = 'mod_bookingcal_ajax(-1, ' . $year . ', ' . $month . ');';
+                $onclick = 'mod_bookingcal_ajax(-1, \'' . self::$modulePosition . '\', ' . $year . ', ' . $month . ');';
                 $html .= '<th class="mod_bookingcal_left" onclick="' . $onclick . '"><span class="mod_bookingcal_left" ></span></th>';
                 $subtractSpan = 2;
             }
             $html .= '<th colspan="' . ($numColumns - $subtractSpan) . '">' . $monthString . '</th>';
-            $onclick = 'mod_bookingcal_ajax(+1, ' . $year . ', ' . $month . ');';
+            $onclick = 'mod_bookingcal_ajax(+1, \'' . self::$modulePosition . '\', ' . $year . ', ' . $month . ');';
             $html .= '<th class="mod_bookingcal_right" onclick="' . $onclick . '"><span class="mod_bookingcal_right" ></span></th>';
         }
         $html .= '</tr>';
@@ -219,7 +231,7 @@ class ModBookingCalendarHelper
             if ($columnCount == 7) {
                 $html .= "</tr>\n<tr>";
                 $columnCount = 0;
-                $rows++;
+                $rows ++;
             }
             if (($year == $currentYear) and ($month == $currentMonth) and ($day == $currentDay))
                 // highlight today's date
@@ -253,15 +265,15 @@ class ModBookingCalendarHelper
         return $html;
     }
 
-    // ---------------------------------------------------------------------------------------------
-    // Draw the number of calendars requested in the module parameters
-    //
-    static function getCalendarsForAsset($params, $asset, $year, $month, $links)
+    static function getCalendarsForAsset($params, $modulePosition, $year, $month, $links)
     {
-        self::$asset = $asset;
+        self::$modulePosition = $modulePosition;
         return self::getCalendars($params, $year, $month, $links);
     }
 
+    // ---------------------------------------------------------------------------------------------
+    // Draw the number of calendars requested in the module parameters
+    //
     static function getCalendars($params, $year, $month, $links)
     {
         $bookings = self::getBookings();
@@ -301,6 +313,7 @@ class ModBookingCalendarHelper
         $offset = $jinput->get('offset', '0', 'STRING'); // -1 for back one month, or +1 for forward one month
         $year = $jinput->get('year', '0', 'STRING');
         $month = $jinput->get('month', '0', 'STRING');
+        $position = $jinput->get('position', null, 'STRING');
 
         // Calculate the new starting month required
         $startDate = mktime(0, 0, 0, $month + $offset, 1, $year);
@@ -312,7 +325,7 @@ class ModBookingCalendarHelper
         $params = new JRegistry($module->params);
 
         // re-make all the calendars and send them back as the Ajax response
-        echo self::getCalendars($params, $year, $month, 1);
+        echo self::getCalendarsForAsset($params, $position, $year, $month, 1);
     }
 }
 
