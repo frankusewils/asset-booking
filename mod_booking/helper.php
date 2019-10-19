@@ -136,6 +136,40 @@ class ModBookingCalendarHelper
                 return JText::_('DECEMBER');
         }
     }
+    
+    static function getSeasonSuffix($month, $cssfile)
+    {
+        $season = 'season';
+        if(!preg_match("/{$season}/i", $cssfile)) {
+            return '';
+        }
+        switch ($month) {
+            case 1:
+                return '_winter';
+            case 2:
+                return '_winter';
+            case 3:
+                return '_spring';
+            case 4:
+                return '_spring';
+            case 5:
+                return '_spring';
+            case 6:
+                return '_summer';
+            case 7:
+                return '_summer';
+            case 8:
+                return '_summer';
+            case 9:
+                return '_autumn';
+            case 10:
+                return '_autumn';
+            case 11:
+                return '_autumn';
+            case 12:
+                return '_winter';
+        }
+    }
 
     static function showPreviousMonth($month, $year, $currentMonth, $currentYear)
     {
@@ -175,10 +209,11 @@ class ModBookingCalendarHelper
         $currentYear = date('Y');
         $currentMonth = date('m');
         $currentDay = date('d');
+        $cssfile = $params->get('cssfile', 'v5-blue.css');
 
         $numColumns = 7;
 
-        $html = '<table class="mod_bookingcal_table"' . $width . '>';
+        $html = '<table class="mod_bookingcal_table' . self::getSeasonSuffix($month, $cssfile) . '"' . $width . '>';
 
         // draw the month and year heading
         $monthString = self::getMonthName($month) . ' ' . $year;
@@ -189,12 +224,12 @@ class ModBookingCalendarHelper
             $subtractSpan = 1;
             if (self::showPreviousMonth($month, $year, $currentMonth, $currentYear)) {
                 $onclick = 'mod_bookingcal_ajax(-1, \'' . self::$moduleId . '\', ' . $year . ', ' . $month . ');';
-                $html .= '<th class="mod_bookingcal_left" onclick="' . $onclick . '"><span class="mod_bookingcal_left" ></span></th>';
+                $html .= '<th class="mod_bookingcal_left" onclick="' . $onclick . '"><span class="mod_bookingcal_left' . self::getSeasonSuffix($month, $cssfile) . '" ></span></th>';
                 $subtractSpan = 2;
             }
             $html .= '<th colspan="' . ($numColumns - $subtractSpan) . '">' . $monthString . '</th>';
             $onclick = 'mod_bookingcal_ajax(+1, \'' . self::$moduleId . '\', ' . $year . ', ' . $month . ');';
-            $html .= '<th class="mod_bookingcal_right" onclick="' . $onclick . '"><span class="mod_bookingcal_right" ></span></th>';
+            $html .= '<th class="mod_bookingcal_right" onclick="' . $onclick . '"><span class="mod_bookingcal_right' . self::getSeasonSuffix($month, $cssfile) . '" ></span></th>';
         }
         $html .= '</tr>';
 
@@ -281,7 +316,8 @@ class ModBookingCalendarHelper
         $startDay = self::getStartDay($params);
         $numMonths = self::getNumMonths($params);
         $tableWidth = self::getFullWidth($params);
-
+        $cssfile = $params->get('cssfile', 'v5-blue.css');
+        
         if ($tableWidth) {
             $divWidth = ' style="width:calc(100% - 6px)"';
             $tableWidth = ' style="width:100%"';
@@ -291,10 +327,11 @@ class ModBookingCalendarHelper
         }
         $html = '';
         for ($i = 1; $i <= $numMonths; $i ++) {
-            $html .= '<div class="mod_bookingcal_inner"' . $divWidth . '>';
+            $html .= '<div class="mod_bookingcal_inner' . self::getSeasonSuffix($month, $cssfile) . '"' . $divWidth . '>';
             $html .= self::getCalendar($params, $year, $month, $dayNameLength, $startDay, $tableWidth, $links, $bookings);
             $links = ''; // only draw links on first calendar
             $html .= '</div>';
+            $html .= ' ';
             $month ++;
             if ($month > 12) {
                 $month = 1;
