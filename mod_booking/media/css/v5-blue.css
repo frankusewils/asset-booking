@@ -21,7 +21,7 @@
     font-weight:normal;
     padding:3px 0;
     min-width:25px;
-    background-color: #3f7aa6;
+    background-color: blue;
     background-image:none;
     text-align: center;
 }
@@ -33,18 +33,18 @@
 
 .mod_bookingcal_table tr.mod_bookingcal_month th {border-left: none; border-right: none;}
 
-.mod_bookingcal_table td {border:1px solid #ccc;padding:3px 0;text-align:center;background-color: #eaebf3}
+.mod_bookingcal_table td {border:1px solid #ccc;padding:3px 0;text-align:center;background-color: lightblue;}
 
 .mod_bookingcal_table td.mod_bookingcal_today {color:white; background-color:#3f7aa6}
 
 .mod_bookingcal_table td.mod_bookingcal_end {
 	color: black;
-    background: linear-gradient(135deg, #F00 50%, #eaebf3 50%);
+    background: linear-gradient(135deg, #F00 50%, lightblue 50%);
 }
 
 .mod_bookingcal_table td.mod_bookingcal_start {
 	color: black;
-    background: linear-gradient(135deg, #eaebf3 50%, #F00 50%);
+    background: linear-gradient(135deg, lightblue 50%, #F00 50%);
 }
 
 .mod_bookingcal_table td.mod_bookingcal_start_end {
@@ -54,7 +54,7 @@
 
 .mod_bookingcal_table td.mod_bookingcal_booked	{color:white; background-color:#F00;}
 
-.mod_bookingcal_table td.mod_bookingcal_nonday {background-color:#fafaff;}
+.mod_bookingcal_table td.mod_bookingcal_nonday {background-color:transparent;}
 
 table tr:hover td {background: inherit;}
 

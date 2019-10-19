@@ -9,7 +9,7 @@
     margin:0;
     border-collapse:collapse;
     border:2px solid #e2d3af;
-    color:#444;
+    color:white;
     background-color:#e6d6a4;
     text-align:center;
     line-height:1.4;
@@ -18,8 +18,8 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 .mod_bookingcal_table th {
-    border:2px groove white;
-    color:#6D4C41;
+    border:1px solid white;
+    color:white;
     text-shadow: 0 1px 0 #fff;
     font-weight:normal;
     padding:3px 0;
@@ -29,20 +29,20 @@
     text-align: center;
 }
 
-.mod_bookingcal_table tr.mod_bookingcal_month th {border-left:none; border-right:none;}
+.mod_bookingcal_table tr.mod_bookingcal_month th {border-left:none; border-right:none; background-color:brown;}
 
-.mod_bookingcal_table td {border:2px groove white;padding:3px;text-align:center;background-color:#e6d6a4;text-shadow: 0 1px 0 #fff;}
+.mod_bookingcal_table td {border:2px groove white;padding:3px;text-align:center;background-color:#B45F04;text-shadow: 0 1px 0 #fff;}
 
 .mod_bookingcal_table td.mod_bookingcal_today {background-color: #FF9800; color:white; text-shadow: 0 1px 0 #252121;}
 
 .mod_bookingcal_table td.mod_bookingcal_end {
-	color: #444;
-    background: linear-gradient(135deg, #F00 50%, #e6d6a4 50%);
+	color: white;
+    background: linear-gradient(135deg, #F00 50%, #B45F04 50%);
 }
 
 .mod_bookingcal_table td.mod_bookingcal_start {
-	color: #444;
-    background: linear-gradient(135deg, #e6d6a4 50%, #F00 50%);
+	color: white;
+    background: linear-gradient(135deg, #B45F04 50%, #F00 50%);
 }
 
 .mod_bookingcal_table td.mod_bookingcal_start_end {

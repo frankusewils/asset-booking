@@ -1,7 +1,7 @@
 .mod_bookingcal_inner {
     display: inline-block;
     vertical-align: top;
-    border: 3px solid lightgray;
+    border: 3px solid gray;
     border-radius: 6px;    
 }
 .mod_bookingcal_table {
@@ -29,7 +29,7 @@
 
 .mod_bookingcal_table tr.mod_bookingcal_day th {color:#444654;}
 
-.mod_bookingcal_table tr.mod_bookingcal_month th {border-left:none;border-right:none;background-color:#f2ccbf}
+.mod_bookingcal_table tr.mod_bookingcal_month th {border-left:none;border-right:none;background-color:yellow}
 
 .mod_bookingcal_table td {border:1px solid #ccc;padding:3px 0;text-align:center;background-color:transparent}
 
@@ -58,8 +58,8 @@ table tr:hover td {background: inherit;}
 
 .mod_bookingcal_table th.mod_bookingcal_left {cursor: pointer;position: relative;}
 span.mod_bookingcal_left {position:absolute; top:6px;right:15px;content:''; border: solid transparent;border-width: 9px;border-right-color: gray;}
-span.mod_bookingcal_left:hover {border-right-color: white}
+span.mod_bookingcal_left:hover {border-right-color: gray}
 
 .mod_bookingcal_table th.mod_bookingcal_right {cursor: pointer;position: relative;}
 span.mod_bookingcal_right {position:absolute; top:6px;left:15px;content:''; border: solid transparent;border-width: 9px;border-left-color: gray;}
-span.mod_bookingcal_right:hover {border-left-color: white}
+span.mod_bookingcal_right:hover {border-left-color: gray}
