@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS `#__booking_calendar` (
   `remarks` text NOT NULL,  
   `price` smallint NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ;
