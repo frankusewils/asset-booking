@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS `#__booking_calendar`;
+DROP TABLE IF EXISTS `#__asset_booking`;
